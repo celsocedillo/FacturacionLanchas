@@ -1,0 +1,108 @@
+<mvc:View controllerName="lanchas.controller.View1" 
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core">
+			<Page title="{i18n>title}">
+				<content><ObjectHeader title="Cliente: {data>/records/0/cliente_id} {data>/records/0/nombre}"
+											intro="Teléfono {data>/records/0/telefono}        Dirección: {data>/records/0/direccion}"
+											
+											titleSelectorPress="handleTitleSelectorPress"
+											iconActive="false"
+											id="__header0"
+											icon="sap-icon://add-contact"
+											backgroundDesign="Translucent"
+											responsive="true">
+
+				<attributes>
+					<ObjectAttribute text="e-mail: {data>/records/0/email}" />
+				</attributes>
+
+				<headerContainer>
+          
+				</headerContainer>
+			</ObjectHeader>
+      
+      <Table id="idTableProjected"
+      inset="false"
+      items="{path:'data>/gastos'}"
+      mode="Delete"
+       delete="handleDelete">
+      <headerToolbar>
+            <OverflowToolbar>
+              <Title text="Fecha {mdprogrammed>/selectedRecord/fProjected}" level="H2"/>
+              <Title text="Factura N° {data>/newFact_id}" level="H2"/>
+              <ToolbarSpacer/>
+              
+              <!-- <Button text="fromSAP" icon="sap-icon://synchronize" enabled="true" press="onPress" /> -->
+              <Button text="Agregar Item" icon="sap-icon://add" enabled="true" press="onClickAdd" />
+          </OverflowToolbar>
+        </headerToolbar>
+      <columns>
+        <Column
+          hAlign="Center">
+          <Text text="Código" />
+        </Column>
+        <Column
+          minScreenWidth="Tablet"
+          demandPopin="true"
+          hAlign="Center">
+          <Text text="Concepto" />
+        </Column>
+        <Column
+          minScreenWidth="Tablet"
+          demandPopin="true"
+          hAlign="Center">
+          <Text text="Cantidad" />
+        </Column>
+
+        <Column
+          minScreenWidth="Tablet"
+          demandPopin="true"
+          hAlign="Center">
+          <Text text="Costo" />
+        </Column>
+
+      </columns>
+      <items>
+        <ColumnListItem>
+          <cells>
+             <Text text="{data>producto_id}" />
+             <Text text="{data>concepto}" />
+             <ObjectNumber
+             number="{data>cantidad}"/>
+             <ObjectNumber
+             number="{data>monto}"/>
+               <Text text="npi" />
+          </cells>
+        </ColumnListItem>
+      </items>
+      
+    </Table>
+    <List
+		binding="{/ProductCollection/0}" >
+		<StandardListItem
+			title="Subtotal {data>/subtotal}"
+			/>
+		<StandardListItem
+			title="Total Impuestos {data>/totI}"
+			/>
+		<StandardListItem
+			title="Total {data>/total}"
+			/>
+
+	</List>
+    </content>
+    <footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="facturaSaveBtn" text="Guardar" type="Accept" press="onSaveFactura" />
+				<Button id="facturaCancelBtn" text="Cancelar" type="Reject" press="onClickCancelar"/>
+							
+			</Toolbar>
+		</footer>
+			</Page>
+			
+	
+</mvc:View>

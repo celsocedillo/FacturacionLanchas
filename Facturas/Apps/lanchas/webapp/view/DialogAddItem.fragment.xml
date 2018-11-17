@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Datos del Cliente"
+			class="sapUiPopupWithPadding"
+			confirm="onCancelCopy"
+			cancel="onCancelCopy"
+			busy="false">
+
+			<f:SimpleForm
+						id="formPlanning"
+						editable="true"
+						labelSpanL="5"
+						labelSpanM="4"
+						labelSpanS="4"
+						emptySpanL="0"
+						emptySpanM="0"
+						emptySpanS="0"
+						columnsL="2"
+		        columnsM="2"
+						maxContainerCols="2"
+						layout="ResponsiveGridLayout"
+						width="100%"
+						busy="false">
+
+						<Label text="Código"/>
+						<Input id="codigo" value = "{data>/code}" liveChange="onValidQuantity"/>
+						<Label text="Cantidad"/>
+						<Input id="cantidad" value = "{data>/quantity}" liveChange="onValidQuantity"/>
+						
+					</f:SimpleForm>
+					
+					
+					<beginButton>
+						<Button id = "aceptar_item" text="Aceptar" type="Accept" press="onClickAcceptItem"/>
+					</beginButton>
+					<endButton>
+						<Button text="Cancelar" type="Reject" press="onClickCancel" />
+					</endButton>
+
+	</Dialog>
+</core:FragmentDefinition>
